@@ -271,3 +271,335 @@ Ce plan transforme votre idée en une machine de contenu structurée, avec une p
 
 
 
+import pandas as pd
+import random
+from datetime import datetime, timedelta
+
+class GenerateurFraisKilometriquesElectrique:
+    def __init__(self):
+        # Paramètres habituels
+        self.bareme_electrique = 0.20  # €/km
+        self.cout_kwh = 0.4  # €/kWh
+        self.consommation_100km = 25  # kWh/100km
+
+        # Liste pour stocker les trajets
+        self.deplacements = []
+        
+        # Objectif kilométrique
+        self.km_objectif = 44000
+        self.km_actuel = 0
+
+        # Informations sur les trajets
+        self.ajouter_deplacements()
+
+    def ajouter_deplacements(self):
+        """Ajoute les déplacements selon vos nouveaux itinéraires"""
+        
+        # Trajets Auneau - Metro (80km aller, 160km aller-retour) - 40 trajets
+        for _ in range(40):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Metro", 160, "Approvisionnement Metro"))
+            self.km_actuel += 160
+
+        # Trajets Auneau - Kedy Pack (85km aller, 170km aller-retour) - 15 trajets
+        for _ in range(15):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Kedy Pack", 170, "Approvisionnement Kedy Pack"))
+            self.km_actuel += 170
+
+        # Trajets Auneau - Tang Frère (85km aller, 170km aller-retour) - 20 trajets
+        for _ in range(20):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Tang Frère", 170, "Approvisionnement Tang Frère"))
+            self.km_actuel += 170
+
+        # Trajets Auneau - One Pack (85km aller, 170km aller-retour) - 10 trajets
+        for _ in range(10):
+            self.deplacements.append(self.creer_deplacement("Auneau", "One Pack", 170, "Approvisionnement One Pack"))
+            self.km_actuel += 170
+
+        # Livraisons (depuis novembre 2024 à décembre 2025)
+        self.ajouter_livraisons()
+        
+        # Fournisseurs spécifiques avec nombres fixes
+        self.ajouter_fournisseurs_specifiques()
+        
+        # Génération aléatoire pour atteindre l'objectif
+        self.completer_avec_trajets_aleatoires()
+
+    def ajouter_livraisons(self):
+        """Ajoute les trajets de livraison de novembre 2024 à décembre 2025"""
+        # Période de livraison : novembre 2024 à décembre 2025 = 14 mois
+        for mois in range(14):
+            # 165 clients par mois, regroupés en tournées
+            nb_tournees = random.randint(8, 12)
+            
+            for tournee in range(nb_tournees):
+                # Distance aléatoire par tournée (pour atteindre environ 1650km/mois)
+                distance_tournee = random.randint(120, 200)
+                
+                # Date dans le mois correspondant
+                if mois < 2:  # novembre-décembre 2024
+                    annee = 2024
+                    mois_calendaire = 11 + mois
+                else:  # janvier 2025 à décembre 2025
+                    annee = 2025
+                    mois_calendaire = mois - 1
+                
+                date_specifique = self.generer_date_mois(annee, mois_calendaire)
+                
+                self.deplacements.append(self.creer_deplacement_avec_date(
+                    "Auneau", "Zone de livraison", distance_tournee, 
+                    f"Tournée livraison ({random.randint(12, 20)} clients)", date_specifique
+                ))
+                self.km_actuel += distance_tournee
+
+    def ajouter_fournisseurs_specifiques(self):
+        """Ajoute les fournisseurs spécifiques avec nombres fixes"""
+        
+        # Leroy Merlin (70km aller-retour) - 5 fois
+        for _ in range(5):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Leroy Merlin", 70, "Achat matériel/équipement"))
+            self.km_actuel += 70
+        
+        # Dispro (150km aller-retour) - 10 fois
+        for _ in range(10):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Dispro", 150, "Approvisionnement Dispro"))
+            self.km_actuel += 150
+        
+        # Coignières (80km aller-retour) - nombre aléatoire entre 8-15
+        nb_coignieres = random.randint(8, 15)
+        for _ in range(nb_coignieres):
+            self.deplacements.append(self.creer_deplacement("Auneau", "Coignières", 80, "Fournisseur Coignières"))
+            self.km_actuel += 80
+
+    def completer_avec_trajets_aleatoires(self):
+        """Génère des trajets aléatoires pour atteindre les 44 000 km"""
+        
+        # Liste de fournisseurs fictifs avec distances variées
+        fournisseurs_aleatoires = [
+            ("Fournisseur A", random.randint(30, 80)),
+            ("Fournisseur B", random.randint(40, 90)),
+            ("Grossiste C", random.randint(50, 100)),
+            ("Distributeur D", random.randint(35, 75)),
+            ("Centrale E", random.randint(60, 120)),
+            ("Depot F", random.randint(45, 85)),
+            ("Magasin G", random.randint(30, 70)),
+            ("Entrepot H", random.randint(80, 150)),
+            ("Boutique I", random.randint(35, 65)),
+            ("Commerce J", random.randint(55, 95)),
+            ("Usine K", random.randint(70, 130)),
+            ("Société L", random.randint(40, 80))
+        ]
+        
+        motifs_aleatoires = [
+            "Approvisionnement",
+            "Livraison spéciale",
+            "Récupération marchandise",
+            "Rendez-vous commercial",
+            "Formation fournisseur",
+            "Réunion professionnelle",
+            "Contrôle qualité",
+            "Négociation tarifs",
+            "Présentation produits",
+            "Visite technique"
+        ]
+        
+        km_restant = self.km_objectif - self.km_actuel
+        
+        print(f"📊 Kilométrage actuel après trajets fixes : {self.km_actuel} km")
+        print(f"🎯 Kilométrage restant à générer : {km_restant} km")
+        
+        # Génération de trajets aléatoires jusqu'à atteindre l'objectif
+        while self.km_actuel < self.km_objectif:
+            # Choisir un fournisseur et une distance aléatoire
+            fournisseur, distance_base = random.choice(fournisseurs_aleatoires)
+            
+            # Varier légèrement la distance (+/- 10km)
+            variation = random.randint(-10, 10)
+            distance = max(30, distance_base + variation)  # Minimum 30km
+            
+            # Si on dépasse l'objectif, ajuster la distance
+            if self.km_actuel + distance > self.km_objectif:
+                distance = self.km_objectif - self.km_actuel
+                if distance < 10:  # Si moins de 10km, on s'arrête
+                    break
+            
+            motif = random.choice(motifs_aleatoires)
+            
+            self.deplacements.append(self.creer_deplacement("Auneau", fournisseur, distance, motif))
+            self.km_actuel += distance
+            
+            # Actualiser la liste des fournisseurs avec de nouvelles distances
+            if random.random() < 0.1:  # 10% de chance de renouveler la liste
+                fournisseurs_aleatoires = [
+                    (nom, random.randint(30, 150)) for nom, _ in fournisseurs_aleatoires
+                ]
+
+    def creer_deplacement(self, depart, destination, distance_km, motif):
+        """Crée un déplacement avec des détails aléatoires"""
+        date = self.generer_date_aleatoire()
+        montant_rembourse = distance_km * self.bareme_electrique
+        cout_reel, energie_consommee = self.calculer_cout_reel_trajet(distance_km)
+        
+        return {
+            "date": date,
+            "depart": depart,
+            "destination": destination,
+            "distance_km": distance_km,
+            "type_trajet": "Aller-retour",
+            "montant_rembourse_euros": montant_rembourse,
+            "cout_reel_euros": cout_reel,
+            "energie_consommee_kwh": energie_consommee,
+            "motif": motif
+        }
+
+    def creer_deplacement_avec_date(self, depart, destination, distance_km, motif, date):
+        """Crée un déplacement avec une date spécifique"""
+        montant_rembourse = distance_km * self.bareme_electrique
+        cout_reel, energie_consommee = self.calculer_cout_reel_trajet(distance_km)
+        
+        return {
+            "date": date,
+            "depart": depart,
+            "destination": destination,
+            "distance_km": distance_km,
+            "type_trajet": "Tournée",
+            "montant_rembourse_euros": montant_rembourse,
+            "cout_reel_euros": cout_reel,
+            "energie_consommee_kwh": energie_consommee,
+            "motif": motif
+        }
+
+    def generer_date_aleatoire(self):
+        """Génère une date aléatoire pour les approvisionnements"""
+        start_date = datetime(2024, 1, 1)
+        end_date = datetime(2025, 12, 31)
+        time_delta = end_date - start_date
+        random_days = random.randint(0, time_delta.days)
+        return (start_date + timedelta(days=random_days)).strftime("%d/%m/%Y")
+
+    def generer_date_mois(self, annee, mois):
+        """Génère une date aléatoire dans un mois spécifique"""
+        if mois > 12:
+            annee += 1
+            mois = mois - 12
+        
+        # Déterminer le nombre de jours dans le mois
+        if mois == 2:
+            nb_jours = 29 if annee % 4 == 0 else 28
+        elif mois in [4, 6, 9, 11]:
+            nb_jours = 30
+        else:
+            nb_jours = 31
+            
+        jour = random.randint(1, nb_jours)
+        return datetime(annee, mois, jour).strftime("%d/%m/%Y")
+
+    def calculer_cout_reel_trajet(self, distance_km):
+        """Calcule le coût réel en électricité du trajet"""
+        energie_consommee = (distance_km * self.consommation_100km) / 100
+        cout_reel = energie_consommee * self.cout_kwh
+        return round(cout_reel, 2), round(energie_consommee, 1)
+
+    def afficher_resume(self):
+        """Affiche un résumé détaillé des déplacements"""
+        total_km = sum(d['distance_km'] for d in self.deplacements)
+        total_rembourse = sum(d['montant_rembourse_euros'] for d in self.deplacements)
+        total_cout_reel = sum(d['cout_reel_euros'] for d in self.deplacements)
+        total_energie = sum(d['energie_consommee_kwh'] for d in self.deplacements)
+
+        # Calculs par type de trajet et fournisseur
+        km_par_motif = {}
+        for deplacement in self.deplacements:
+            destination = deplacement['destination']
+            if destination not in km_par_motif:
+                km_par_motif[destination] = 0
+            km_par_motif[destination] += deplacement['distance_km']
+
+        print("\n" + "="*80)
+        print("🔋 RÉSUMÉ FRAIS KILOMÉTRIQUES - VÉHICULE ÉLECTRIQUE")
+        print("="*80)
+        print("📊 OBJECTIF ATTEINT :")
+        print(f"• Kilométrage initial : 35 000 km")
+        print(f"• Kilométrage cible : 79 000 km")
+        print(f"• Différence à justifier : 44 000 km")
+        print(f"• Kilométrage généré : {total_km} km")
+        print(f"• Écart : {total_km - 44000:+} km")
+        print("-" * 50)
+        
+        print("🚗 RÉPARTITION PAR DESTINATION :")
+        for destination, km in sorted(km_par_motif.items(), key=lambda x: x[1], reverse=True):
+            if km > 500:  # Afficher seulement les principales destinations
+                print(f"• {destination}: {km} km")
+        
+        print("-" * 50)
+        print(f"Nombre total de déplacements : {len(self.deplacements)}")
+        print(f"Distance totale : {total_km} km")
+        print(f"Montant remboursé total : {total_rembourse:.2f} €")
+        print(f"Coût réel de l'électricité total : {total_cout_reel:.2f} €")
+        print(f"⚡ Énergie totale consommée : {total_energie:.1f} kWh")
+        print("="*80)
+
+    def exporter_excel(self, nom_fichier="frais_kilometriques_44k.xlsx"):
+        """Exporte les déplacements vers un fichier Excel"""
+        df = pd.DataFrame(self.deplacements)
+        
+        # Convertir les dates au format datetime
+        df['date'] = pd.to_datetime(df['date'], format='%d/%m/%Y')
+        
+        # Tri par date croissante
+        df = df.sort_values(by='date').reset_index(drop=True)
+        
+        # Reformater les dates pour l'affichage
+        df['date'] = df['date'].dt.strftime('%d/%m/%Y')
+
+        # Ajouter une ligne de total
+        total_km = df['distance_km'].sum()
+        total_rembourse = df['montant_rembourse_euros'].sum()
+        total_cout_reel = df['cout_reel_euros'].sum()
+        total_energie = df['energie_consommee_kwh'].sum()
+
+        ligne_total = {
+            "date": "TOTAL",
+            "depart": "",
+            "destination": "",
+            "distance_km": total_km,
+            "type_trajet": "",
+            "montant_rembourse_euros": total_rembourse,
+            "cout_reel_euros": total_cout_reel,
+            "energie_consommee_kwh": total_energie,
+            "motif": ""
+        }
+
+        df = pd.concat([df, pd.DataFrame([ligne_total])], ignore_index=True)
+
+        # Créer un writer Excel pour formater
+        with pd.ExcelWriter(nom_fichier, engine='openpyxl') as writer:
+            df.to_excel(writer, sheet_name='Frais Kilométriques', index=False)
+            
+            # Obtenir le workbook et la worksheet
+            workbook = writer.book
+            worksheet = writer.sheets['Frais Kilométriques']
+            
+            # Ajuster la largeur des colonnes
+            for column in worksheet.columns:
+                max_length = 0
+                column_letter = column[0].column_letter
+                for cell in column:
+                    try:
+                        if len(str(cell.value)) > max_length:
+                            max_length = len(str(cell.value))
+                    except:
+                        pass
+                adjusted_width = min(max_length + 2, 50)
+                worksheet.column_dimensions[column_letter].width = adjusted_width
+
+        print(f"✅ Fichier Excel créé : {nom_fichier}")
+        print(f"📋 Nombre de lignes : {len(df)}")
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    print("🚀 Génération des 44 000 km de frais kilométriques...")
+    generateur = GenerateurFraisKilometriquesElectrique()
+    generateur.afficher_resume()
+    generateur.exporter_excel("frais_kilometriques_44000km_complet.xlsx")
+
+
