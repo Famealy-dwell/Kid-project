@@ -600,6 +600,60 @@ if __name__ == "__main__":
     print("🚀 Génération des 44 000 km de frais kilométriques...")
     generateur = GenerateurFraisKilometriquesElectrique()
     generateur.afficher_resume()
+
+
+
+
     generateur.exporter_excel("frais_kilometriques_44000km_complet.xlsx")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Refonte de la gestion documentaire normative
+Une axe d'amélioration identifié pour l'année prochaine est de refondre notre gestion documentaire normative en l'alignant sur l'approche de l'éco, qui a prouvé son efficacité. Concrètement, nous allons abandonner la structure actuelle (une soumission centralisée des documents, sans validation formelle par les responsables de chaque module de risque) au profit d'une arborescence en sous-répertoires, où chaque dossier correspondra à un type de risque spécifique (financier, opérationnel, conformité, etc.). Cette organisation permettra de confier la validation des documents directement au responsable du module de risque concerné, ce qui simplifiera le processus, renforcera la responsabilisation et garantira une meilleure traçabilité et cohérence entre nos différents périmètres d'analyse.
+ Exhaustivité de la documentation sur les risques ALM
+Il est indispensable de veiller à une complétude des sous-parties et à leur mise à jour sur le document Risk and Compliance Governance and management frameworks (relatif aux risques ALM). Exemples : • 4.1.1.3.4.3 Structural interest rate risk management • 4.1.1.3.4.4 Structural foreign exchange risk management • 4.1.1.3.4.5 Key events 2025. 
+Rédaction des supports en anglais
+Évaluer l’opportunité de rédiger le support du comité ICAAP en anglais afin de permettre une réutilisation immédiate dans le Capital Plan et d’en faciliter la présentation lors de la réunion avec la JST sur l’ICAAP. Même sujet pour les coussins de gestion. 
+Maîtrise des risques liés à l'édition de fichiers partagés
+L'utilisation d'un fichier Excel centralisé pour le partage d'informations, bien qu'efficace pour la diffusion, présente des risques significatifs lors de sa phase d'édition. Les modifications concurrentes par plusieurs entités (DR, DF) peuvent engendrer des conflits de versions et des écrasements de données involontaires. Cette situation compromet l'intégrité des données et, par conséquent, la fiabilité des présentations qui en dépendent. La pratique actuelle consistant à effectuer des sauvegardes manuelles est une mesure réactive qui ne prévient pas ces risques à la source.
+Stratégie ESG plus factuelle
+Suite à l'analyse du document final, il a été constaté que la section dédiée à la Stratégie ESG pourrait être renforcée. Un retour a souligné la nécessité de faire évoluer son contenu vers une approche plus factuelle pour le prochain exercice. Il est donc recommandé que les futures versions de ce chapitre s'appuient davantage sur des données quantifiables, des indicateurs de performance (KPIs) et des preuves concrètes des actions menées, afin de passer d'une présentation déclarative à une démonstration de résultats. 
+ 
+Amélioration de la synchronisation avec les processus Risques du Groupe
+L'analyse a mis en évidence un besoin de renforcer les points de synchronisation avec les processus amont pour garantir la pertinence et la complétude de nos travaux. Deux axes d'amélioration critiques ont été identifiés. Premièrement, il est impératif que la taxonomie interne des risques soit transmise à la coordination ICAAP dès sa validation dans le cadre de la revue annuelle. Deuxièmement, une vérification systématique de la couverture des risques matériels doit être déclenchée immédiatement après la validation de l'inventaire officiel du Groupe. L'institutionnalisation de ces deux flux d'information permettra de sécuriser le périmètre de travail, d'éviter les réajustements tardifs et d'assurer un alignement constant avec les référentiels Groupe.
+Sharepoint 
+Il est nécessaire d'améliorer la capacité à comprendre les raisons des échecs d'exécution des flux à un niveau opérationnel. Une visibilité claire du déroulement du workflow est essentielle pour identifier précisément les points de défaillance. Si une analyse approfondie n'est pas immédiatement réalisable, une solution de backup doit être mise en place pour confirmer l'exécution des demandes d'approbation. Actuellement, un manque de clarté prévaut pour les contributeurs lors de la soumission des demandes d'approbation (l’idée étant d’éviter la sur-sollicitions auprès des valideurs). 
+ 
+Mise à jour du calendrier 
+Ou on reste comme ca
+Au niveau de la BCE 
+
 
 
