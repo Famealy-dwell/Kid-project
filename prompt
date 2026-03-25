@@ -657,3 +657,65 @@ Au niveau de la BCE
 
 
 
+Dimension Gouvernance & Organisation
+
+points forts
+Gouvernance commune entre la trajectoire centrale, l’approche normative et l’approche économique
+Présence des parties prenantes clés au sein des comités de validation (ICAAP DRG, CPAN, COCM, CDG, ...)
+Coordination étroite entre BPCE et Natixis, avec un alignement des méthodes et principes, une anticipation des sujets structurants, une comitologie bilatérale régulière ainsi qu’un planning synchronisé BPCE / Natixis intégrant les instances de validation. 
+
+faiblesses 
+Gouvernance bicéphale DF/DR avec faible communication opérationnelle.
+Faible intégration des réseaux et filiales hors Natixis dans les travaux ICAAP avec une centralisation des analyses et travaux au niveau de BPCE, limitant les réflexes ICAAP au sein du Groupe.  
+L’ICAAP reste aujourd’hui largement perçu comme un exercice de production réglementaire, avec une appropriation limitée de ses résultats par les instances décisionnelles et les métiers.
+Faible intégration de l’ICAAP dans les dispositifs Groupe : 
+Faible articulation entre l’ICAAP et les processus  (ILAAP, plan de résolution, plan stratégique, budget, pilotage de la performance).
+Pas de convergence formalisée des hypothèses entre capital planning, et processus budgétaires.
+
+levier d'amélioration 
+
+Renforcer l’acculturation et l’implication progressive des établissements hors Natixis et identifier des relais locaux pour favoriser l’appropriation des enjeux ICAAP. 
+Diffuser des résultats/conclusions ICAAP synthétiques et ciblés (par métier, par palier, etc.) pour favoriser leur appropriation par les instances de pilotage
+Formaliser une gouvernance de coordination entre ICAAP, ILAAP, plans de résolution, planification financière et stratégique.
+
+Dimension processus : 
+point fort 
+Processus ICAAP formalisé à travers une cartographie, des procédures par sous-processus et des politiques internes. 
+Intégration du RAF dans la démarche ICAAP, notamment via les seuils et limites RAF (CET1 / ECO) et leur confrontation aux résultats projetés des approches normative et économique
+Validation de tous les modèles de l’approche économique avant l’approbation des chiffrages 
+
+faiblesses 
+
+Travail en silo entre contributeurs risques et équipe Capital Management : peu de coordination sur les hypothèses, et analyses des résultats
+Capital Management intervient en aval comme agrégateur, avec un positionnement qui limite la capacité à exercer une analyse critique des chiffres transmis.
+Absence d’insertion opérationnelle des résultats ICAAP : 
+Absence de démarche structurée d’analyse ou d’exploitation des signaux issus du besoin en capital économique 
+Les résultats de l’approche éco sont insuffisamment mobilisés dans les arbitrages stratégiques (dividendes, pilotage financier, pricing, etc.) 
+Processus et instances de validation distincts pour les approches normative et économique, limitant la communication entre les deux approches. 
+
+leviers d'amélioration 
+
+Renforcer le rôle de Capital Management en tant que challenger (et pas uniquement collecteur) des évaluations économiques.
+Structurer des rendus ICAAP Risque clé, avec mise en perspective économique vs réglementaire, analyse des vulnérabilités, sensibilité, etc.
+Étudier une structuration des processus et des instances de validation favorisant une meilleure articulation et coordination entre les approches normative et économique.
+
+
+Dimensions méthodologie, data & outils 
+points fort 
+Méthodologies formalisées via des notes et procédures.
+Portail SharePoint ICAAP structurant le workflow de contribution et de validation, et assurant un archivage sécurisé et centralisé des livrables.
+Outils Excel distincts utilisés par DRG et Capital Management pour la consolidation, avec contrôles intégrés, permettant une double vérification des données et une traçabilité renforcée
+
+faiblesses
+Excel comme outil unique pour l’agrégation et le suivi des évaluations économiques : pas d’historisation automatique, ni d’analyse granulaire des variations.
+Faible capacité d’analyse « drill-down » sur les contributions 
+Manque de visibilité, pour l’équipe Capital Management, sur la qualité et la traçabilité des données utilisées par les modules risques pou le P2.
+Le calcul du capital interne repose sur un enchaînement d’ajustements, souvent reconduits d’un exercice à l’autre sans réévaluation de leur pertinence économique
+Les nouveaux risques (ESG, géopolitique...) sont/seront modélisés de façon autonome, sans articulation formalisée avec les autres modules de risque existants (ex. crédit).
+
+leviers d'amélioration 
+Implémenter un outil structurant la collecte, l’historisation et l’analyse des contributions.
+Ajouter des modules d’analyse des variations : Vision historique, granularité, variation par composante, Alertes …
+Mettre en place un dispositif permettant à la DF d’évaluer la qualité, la complétude et la traçabilité des données d’entrée utilisées dans le calcul du P2
+Lancer une revue critique des ajustements appliqués au capital prudentiel/comptable, afin de clarifier ceux ayant une justification économique réelle et stabiliser une doctrine de calcul.
+Structurer les travaux d’intégration des nouveaux risques dans une logique cohérente avec les autres modules, en identifiant les potentiels chevauchements.
